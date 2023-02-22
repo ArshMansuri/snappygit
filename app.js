@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 6020
 
 
 
-app.use(cors())
+app.use(cors({origin: 'http://localhost:8888'}));
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
