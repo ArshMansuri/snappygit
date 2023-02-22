@@ -8,7 +8,13 @@ const PORT = process.env.PORT || 6020
 
 
 
-app.use(cors({origin: 'https://social-snappy.web.app'}));
+
+app.use(cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+  }));
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
