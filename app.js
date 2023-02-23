@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cookiParser = require('cookie-parser');
 const cloudinary = require("cloudinary")
-const cors = require("cors")
+// const cors = require("cors")
 const PORT = process.env.PORT || 6020
 
 
@@ -12,14 +12,16 @@ const PORT = process.env.PORT || 6020
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
+app.use(express.static('build'))
 app.use(cookiParser());
+
 
 //--------------- middleware--------------
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({extended: true}));
 
 
-app.use(cors());
+// app.use(cors(origin = 'https://social-snappy.web.app/'));
 //---------------import router ----------
 const user = require('./routes/user');
 const post = require('./routes/post');
