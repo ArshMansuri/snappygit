@@ -23,7 +23,11 @@ app.use(express.urlencoded({extended: true}));
 
 
 // app.use(cors());
-app.options('*', cors())
+app.options('*', cors({
+    allowedHeaders: "*",
+    allowMethods: "*",
+    origin: "*"
+}))
 //---------------import router ----------
 const user = require('./routes/user');
 const post = require('./routes/post');
