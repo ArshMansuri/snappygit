@@ -3,16 +3,16 @@ const express = require('express');
 const app = express();
 const cookiParser = require('cookie-parser');
 const cloudinary = require("cloudinary")
-// const cors = require("cors")
+const cors = require("cors")
 const PORT = process.env.PORT || 6020
 
 
 
-
+app.use(cors())
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
-app.use(express.static('build'))
+// app.use(express.static('build'))
 app.use(cookiParser());
 
 
