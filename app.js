@@ -3,21 +3,21 @@ const express = require('express');
 const app = express();
 const cookiParser = require('cookie-parser');
 const cloudinary = require("cloudinary")
-const cors = require("cors")
+// const cors = require("cors")
 const PORT = process.env.PORT || 6020
 
 
-app.options('*', cors({
-    allowedHeaders: "*",
-    allowMethods: "*",
-    origin: "*"
-}))
+// app.options('*', cors({
+//     allowedHeaders: "*",
+//     allowMethods: "*",
+//     origin: "*"
+// }))
 
 
 
 const {connectDataBase} = require('./db/conn');
 connectDataBase();
-// app.use(express.static('build'))
+app.use(express.static('build'))
 app.use(cookiParser());
 
 
