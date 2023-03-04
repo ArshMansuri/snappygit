@@ -7,7 +7,11 @@ const cors = require("cors")
 const PORT = process.env.PORT || 6020
 
 
-
+app.options('*', cors({
+    allowedHeaders: "*",
+    allowMethods: "*",
+    origin: "*"
+}))
 
 
 
@@ -23,11 +27,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 // app.use(cors());
-app.options('*', cors({
-    allowedHeaders: "*",
-    allowMethods: "*",
-    origin: "*"
-}))
+
 //---------------import router ----------
 const user = require('./routes/user');
 const post = require('./routes/post');
