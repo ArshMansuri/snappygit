@@ -26,9 +26,7 @@ app.use(express.urlencoded({extended: true}));
 const user = require('./routes/user');
 const post = require('./routes/post');
 
-app.use(cors({
-    origin: "https://social-snappy.web.app"
-}));
+app.use(cors());
 
 
 //---------------use router -------------
