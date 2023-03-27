@@ -339,6 +339,22 @@ exports.getAllComment = async (req, res) =>{
         const owner = post.owner._id
         const ownerName = post.owner.username
         const ownerImage = post.owner.avatar.url
+        let index = -1;
+        let obj = {}
+
+       for(let i=0; i<comments.length; i++){
+        if(comments[i].user._id.toString() === req.user._id.toString()){
+            index = i;
+            console.log(comments[i]);
+            obj = comments[i];
+            console.log(obj)
+            break;
+        }
+       }
+
+       if(index !== -1){
+        comments.splice(index, 1);
+       }
 
         return res.status(200).json({
             success: true,
@@ -346,7 +362,8 @@ exports.getAllComment = async (req, res) =>{
             caption,
             owner,
             ownerName,
-            ownerImage
+            ownerImage,
+            obj
         })
 
     } catch (error) {
